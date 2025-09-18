@@ -1,0 +1,93 @@
+:root{
+  --toolbar-height: 72px;
+}
+
+.app-toolbar{
+  height: var(--toolbar-height);
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  background-color: rgb(122, 120, 223);
+}
+
+.toolbar-left .brand{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+  color:inherit;
+}
+
+.logo{
+  height:40px;
+  width:40px;
+  margin-right:8px;
+}
+
+.brand-text{
+  font-weight:700;
+  font-size:1.1rem;
+}
+
+.toolbar-center{
+  flex:1 1 auto;
+  display:flex;
+  justify-content:center;
+}
+
+.main-nav button{
+  margin:0 4px;
+}
+
+.toolbar-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.quick-search{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-right:12px;
+}
+
+.quick-search .field{
+  width:120px;
+}
+
+.quick-search .field.date{
+  width:140px;
+}
+
+.search-btn{
+  height:40px;
+}
+
+.actions button[mat-icon-button]{
+  color:inherit;
+}
+
+@media (max-width: 900px){
+  .toolbar-center{ display:none; }
+  .quick-search{ display:none; }
+  .brand-text{ display:none; }
+  .app-toolbar{ padding:0 8px; }
+}
+
+/* compact toolbar styles */
+.compact-toolbar{ display:none; }
+.compact-left{ display:flex; align-items:center; }
+.compact-right{ display:flex; gap:8px; align-items:center; }
+
+@media (max-width: 600px){
+  .app-toolbar{ display:none; }
+  .compact-toolbar{ display:flex; }
+  .logo{ height:36px; width:36px; }
+}
+
+/* aesthetic touches */
+.brand-text .title{ font-weight:800; letter-spacing:0.2px; }
+.brand-text .subtitle{ font-size:0.75rem; color:rgba(223, 29, 29, 0.85); }
+.search-form .mat-form-field{ background: #1c59840f; border-radius:6px; }
+.search-btn{ min-width:96px; }
+.menu-btn{ margin-right:8px; }

@@ -1,5 +1,65 @@
-<div class="h-10">
-   <mat-toolbar class="text-white bg-blue-900 h-10">
-      <span class="text-lg font-bold">Flight Booking System</span>
-      </mat-toolbar>
-</div>
+<mat-toolbar class="app-toolbar" color="primary" role="navigation">
+	<div class="left">
+		<button mat-icon-button class="menu-btn" aria-label="Open menu" (click)="toggle.emit()">
+			<mat-icon>menu</mat-icon>
+		</button>
+		<a class="brand" routerLink="/">
+			<img src="/assets/logo.png" alt="flight" class="logo" />
+			<div class="brand-text">
+			</div>
+		</a>
+	</div>
+
+	<div class="center" *ngIf="showSearch">
+		<form [formGroup]="searchForm" class="search-form" (ngSubmit)="onSearch()">
+			<mat-form-field appearance="fill" class="field from">
+				<mat-label>From</mat-label>
+				<input matInput formControlName="from" placeholder="City or airport" />
+			</mat-form-field>
+
+			<mat-form-field appearance="fill" class="field to">
+				<mat-label>To</mat-label>
+				<input matInput formControlName="to" placeholder="City or airport" />
+			</mat-form-field>
+
+			<mat-form-field appearance="fill" class="field date">
+				<mat-label>Depart</mat-label>
+				<input matInput [matDatepicker]="picker" formControlName="depart" placeholder="Departure" />
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+
+			<mat-form-field appearance="fill" class="field pax">
+				<mat-label>Passengers</mat-label>
+				<mat-select formControlName="passengers">
+					<mat-option *ngFor="let p of [1,2,3,4]" [value]="p">{{p}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<button type="submit" mat-flat-button color="accent" class="search-btn">Search</button>
+		</form>
+	</div>
+
+
+		<button mat-stroked-button color="accent" routerLink="/signin">Sign in</button>
+
+</mat-toolbar>
+
+<!-- Compact toolbar for small screens -->
+<mat-toolbar class="compact-toolbar" color="primary">
+	<div class="compact-left">
+		<a class="brand" routerLink="/">
+			<img src="/assets/logo.png" alt="Flight" class="logo" />
+		</a>
+	</div>
+	<div class="compact-right">
+		<button mat-icon-button (click)="toggleSearch()" aria-label="Toggle search">
+			<mat-icon>search</mat-icon>
+		</button>
+		<button mat-icon-button routerLink="/signin" aria-label="Sign in">
+			<mat-icon>person</mat-icon>
+		</button>
+	</div>
+</mat-toolbar>
+
+
